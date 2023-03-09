@@ -1,0 +1,19 @@
+[package]
+name = "nice-duration"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+#default = []
+default = ["micro", "chrono", "string-builder"]
+chrono = ["dep:chrono"]
+micro = []
+string-builder = ["dep:string-builder"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = { version = "0.4.23", optional = true }
+lazy_static = "1.4.0"
+string-builder = { version = "0.2.0", optional = true }
+
+
