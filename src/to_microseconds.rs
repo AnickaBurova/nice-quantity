@@ -82,3 +82,18 @@ impl ToMicroseconds for &std::time::Duration {
         self.as_micros()
     }
 }
+
+#[cfg(feature = "chrono")]
+impl ToMicroseconds for chrono::Duration {
+    fn to_microseconds(&self) -> u128 {
+        self.num_microseconds().unwrap() as u128
+    }
+}
+
+
+#[cfg(feature = "chrono")]
+impl ToMicroseconds for &chrono::Duration {
+    fn to_microseconds(&self) -> u128 {
+        self.num_microseconds().unwrap() as u128
+    }
+}

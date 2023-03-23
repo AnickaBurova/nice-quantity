@@ -1,11 +1,11 @@
 [package]
-name = "nice-duration"
+name = "nice-quantity"
 version = "0.1.0"
 edition = "2021"
 
 [features]
-#default = []
-default = ["micro", "chrono", "string-builder"]
+default = []
+#default = ["micro", "chrono", "string-builder"]
 chrono = ["dep:chrono"]
 micro = []
 string-builder = ["dep:string-builder"]
