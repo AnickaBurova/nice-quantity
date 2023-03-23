@@ -1,3 +1,8 @@
+//! Get the microseconds value out of some value representing duration.
+//! The `nice_duration` function will format the duration in to a string, where it will skip
+//! zeros and will start with the highest possible unit.
+//! Precision can be used to set choose the lowest possible unit to format into.
+//! `short_units` switches between formatting full unit names or their short representation.
 use crate::fmt::custom_format;
 
 #[repr(usize)]

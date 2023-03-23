@@ -1,3 +1,7 @@
+//! To quickly interpret plain float values as seconds duration.
+//! Using trait function as_seconds() will convert the float in to corresponding seconds type.
+//! This will give you functions to convert into micro and milli seconds.
+
 use crate::to_milliseconds::ToMilliseconds;
 #[cfg(feature = "micro")]
 use crate::to_microseconds::ToMicroseconds;
@@ -39,6 +43,32 @@ impl ToMilliseconds for SecondsF64 {
         (self.0 * 1000.0) as i64
     }
 }
+
+pub struct SecondsF32(pub f32);
+
+impl Available for SecondsF32 {}
+
+#[cfg(feature = "micro")]
+impl ToMicroseconds for SecondsF32 {
+    fn to_microseconds(&self) -> u128 {
+        (self.0 * 1000_000.0) as u128
+    }
+}
+
+impl AsSeconds for f32 {
+    type Seconds = SecondsF32;
+    fn as_seconds(&self) -> Self::Seconds {
+        SecondsF32(*self)
+    }
+}
+
+impl ToMilliseconds for SecondsF32 {
+    fn to_milliseconds(&self) -> i64 {
+        (self.0 * 1000.0) as i64
+    }
+}
+
+
 
 #[cfg(test)]
 mod tests {
